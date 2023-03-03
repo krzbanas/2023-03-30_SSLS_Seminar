@@ -1,0 +1,16 @@
+---
+title: "Classification of the Residues after High and Low Order Explosions using Machine Learning Techniques on Fourier Transform Infrared (FTIR) spectra"
+author: "Krzysztof Banas"
+date: "2023-03-30"
+format: beamer
+#format: 
+#  revealjs: 
+#   theme: sky
+---
+
+## Introduction
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+
+
