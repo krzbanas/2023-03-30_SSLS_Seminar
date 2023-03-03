@@ -1,8 +1,8 @@
 ---
 title: "Classification of the Residues after High and Low Order Explosions"
-subtitle: " using Machine Learning Techniques on Fourier Transform Infrared (FTIR) spectra"  
+subtitle: "using Machine Learning Techniques on Fourier Transform Infrared (FTIR) spectra"  
 author: 
-  - "Krzysztof Banas"
+  - "Krzysztof Banas and AI"
 date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
