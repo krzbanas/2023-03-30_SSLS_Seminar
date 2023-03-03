@@ -1,5 +1,5 @@
 ---
-title: "Classification of the Residues after High and Low Order Explosions"
+title: "Classification of the Residues after High and Low Order Explosions New Name"
 subtitle: "using Machine Learning Techniques on Fourier Transform Infrared (FTIR) spectra"  
 author: 
   - "Krzysztof Banas and AI"
