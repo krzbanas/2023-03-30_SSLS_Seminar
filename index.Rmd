@@ -2,7 +2,7 @@
 title: "Classification of the Residues after High and Low Order Explosions New Name"
 subtitle: "using Machine Learning Techniques on Fourier Transform Infrared (FTIR) spectra"  
 author: 
-  - "Krzysztof Banas and AI"
+  - "Krzysztof Banas"
 date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
@@ -53,6 +53,12 @@ class: inverse center middle
 ---
 ## Motivation
 
+---
+## New Slide with list
+
+- one
+- two
+- three
 
 ---
 class: inverse center middle
