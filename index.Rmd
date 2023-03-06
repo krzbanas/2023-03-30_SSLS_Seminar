@@ -101,15 +101,17 @@ class: inverse center middle
 
 .pull-left[
 
-### Manuscript
+### Manuscript:
 
 ]
 
 
 .pull-right[
 
-### Slides
+### Slides: 
+https://krzbanas.github.io/2023-03-30_SSLS_Seminar
 
+![Seminar](FIGURES/2023-03-30_Seminar.png)
 
 ]
 
