@@ -75,6 +75,24 @@ class: inverse center middle
 ---
 ## How PCA works
 
+![Test](FIGURES/pca-anim.webp)
+
+
+---
+## PCA: Practical Applications
+
+- Finance: analyze stock market data to identify patterns 
+- Image compression: compress digital images 
+- Genetics: analyze genetic data to identify patterns
+- Social media: social media data to identify trends in user behavior and preferences
+- Marketing: consumer data to identify patterns in purchasing behavior and preferences
+- Healthcare: patient data to identify risk factors and predict outcomes
+- Quality control: manufacturing data to identify patterns in product quality and performance
+- Agriculture: crop data to identify patterns in yields and optimize farming practices
+- Climate research: climate data to identify patterns in weather patterns and predict future climate trends
+- Sports: player data to identify key factors that contribute to winning games and championships.
+
+
 ---
 ## PCA for spectrosopic data
 
