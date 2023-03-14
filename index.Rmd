@@ -77,6 +77,18 @@ class: inverse center middle
 
 ![Test](FIGURES/pca-anim.webp)
 
+---
+## PCA on decathlon dataset
+
+---
+## Biplot
+
+---
+## Correlation between variables
+
+---
+## Principal Components: screeplot and scoreplot
+
 
 ---
 ## PCA: Practical Applications
@@ -93,8 +105,19 @@ class: inverse center middle
 - Sports: player data to identify key factors that contribute to winning games and championships.
 
 
+
 ---
 ## PCA for spectrosopic data
+
+
+---
+## Loadings and cos2 plot
+
+---
+## Scoreplots
+
+---
+## Identification/Classification/Grouping
 
 ---
 ## 2D partitions
@@ -107,9 +130,39 @@ class: inverse center middle
 
 
 ---
+## LDA on principal components
+
+---
+## Discriminant functions plot
+
+
+
+---
 class: inverse center middle
 
 # Conclusions
+
+---
+## Take home message
+
+- Spectroscopic data are multidimensional and highly correlated
+--
+
+- PCA "transfers" most variability of the system to the first few principal components
+--
+
+- PCA removes correlation between variables
+--
+
+- For classification model we need another method: LDA
+--
+
+- With PCs as input variables LDA works well in predicting the class membership
+--
+
+- We can validate model with various statistical methods, for example Leave-One-Out
+
+
 
 ---
 ## Final Remarks
