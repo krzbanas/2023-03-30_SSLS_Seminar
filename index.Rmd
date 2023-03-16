@@ -79,15 +79,69 @@ class: inverse center middle
 
 ---
 ## PCA on decathlon dataset
+```{r}
+library("FactoMineR")
+library("factoextra")
+data(decathlon2)
+knitr::kable(head(decathlon2[, 1:9], n=8), format = 'html')
 
----
-## Biplot
+```
+
 
 ---
 ## Correlation between variables
 
+```{r}
+decathlon2.active <- decathlon2[1:23, 1:10]
+cor.mat <- round(cor(decathlon2.active),2)
+library("corrplot")
+corrplot(cor.mat, type="upper", order="hclust", 
+         tl.col="black", tl.srt=45)
+```
+
+
+
 ---
 ## Principal Components: screeplot and scoreplot
+
+```{r}
+res.pca <- PCA(decathlon2.active, graph = FALSE)
+eigenvalues <- res.pca$eig
+barplot(eigenvalues[, 2], names.arg=1:nrow(eigenvalues), 
+       main = "Variances",
+       xlab = "Principal Components",
+       ylab = "Percentage of variances",
+       col ="steelblue")
+# Add connected line segments to the plot
+lines(x = 1:nrow(eigenvalues), eigenvalues[, 2], 
+      type="b", pch=19, col = "red")
+```
+
+---
+## Loadings
+```{r}
+fviz_pca_var(res.pca, col.var="contrib")+
+scale_color_gradient2(low="blue", mid="white", high="red")+theme_bw()
+```
+
+
+---
+## Principal Components: screeplot and scoreplot
+```{r}
+fviz_pca_ind(res.pca)
+```
+
+
+---
+## Biplot
+```{r}
+fviz_pca_biplot(res.pca,  geom = "text")
+```
+
+
+
+---
+
 
 
 ---
@@ -121,7 +175,9 @@ class: inverse center middle
 
 ---
 ## 2D partitions
-
+<img src="FIGURES/Partition_plot.png"
+     width="800px"
+     style="position:absolute; left:10px; top:130px;">
 ---
 ## Building Classification Model
 
@@ -162,10 +218,6 @@ class: inverse center middle
 
 - We can validate model with various statistical methods, for example Leave-One-Out
 
-
-
----
-## Final Remarks
 
 ---
 ## Where to find:
