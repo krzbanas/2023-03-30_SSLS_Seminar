@@ -4,7 +4,7 @@
     <title>Classification of the Residues after High and Low Order Explosions New Name</title>
     <meta charset="utf-8" />
     <meta name="author" content="Krzysztof Banas" />
-    <meta name="date" content="2023-03-16" />
+    <meta name="date" content="2023-03-20" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
     <script src="index_files/htmlwidgets/htmlwidgets.js"></script>
     <link href="index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
@@ -31,7 +31,7 @@ class: center, middle, inverse, title-slide
 ### Krzysztof Banas
 ]
 .date[
-### 2023-03-16
+### 2023-03-20
 ]
 
 ---
@@ -51,11 +51,62 @@ class: inverse center middle
 
 ## SPF Project
 
+.pull-left[
+
+*   in collaboration with SPF
+*   high and low order explosions
+*   debris collected
+*   analysed with infrared spectroscopy
+]
+
+.pull-right[
+
+
+![Test](FIGURES/explosion.png)
+]
+
 ---
 ## Experiments
 
+.pull-left[
+
+*   KBr pellets
+*   mid-IR range
+*   multiple spectra measured
+*   spectral signatures from high energetic material
+*   ... but also from the surface material (paper, plastic, textile)
+]
+
+.pull-right[
+
+
+1.  Item one
+1.  Item two
+1.  Item three
+1.  Item four
+]
+
+
 ---
-## Motivation
+## Motivation for this sub-project
+
+.pull-left[
+
+*   check which materials are more suitable as sample collectors
+*   check what is the influence of the order of explosion 
+*   investigate dimension reduction method in combination with discrimination
+*   building classification model: PCA-LDA
+
+]
+
+.pull-right[
+
+
+1.  Item one
+1.  Item two
+1.  Item three
+1.  Item four
+]
 
 ---
 ## New Slide with list
@@ -72,6 +123,23 @@ class: inverse center middle
 ---
 
 ## Spectral Data
+.pull-left[
+
+*   typically more variables than observations
+*   variables are highly correlated and auto-correlated
+*   before modeling need for dimension reduction
+*   pre-processing
+]
+
+.pull-right[
+
+
+1.  Item one
+1.  Item two
+1.  Item three
+1.  Item four
+]
+
 
 ---
 ## Dimension Reduction
@@ -83,14 +151,6 @@ class: inverse center middle
 
 ---
 ## PCA on decathlon dataset
-
-```r
-library("FactoMineR")
-library("factoextra")
-data(decathlon2)
-knitr::kable(head(decathlon2[, 1:9], n=8), format = 'html')
-```
-
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
@@ -210,15 +270,6 @@ knitr::kable(head(decathlon2[, 1:9], n=8), format = 'html')
 ---
 ## Correlation between variables
 
-
-```r
-decathlon2.active &lt;- decathlon2[1:23, 1:10]
-cor.mat &lt;- round(cor(decathlon2.active),2)
-library("corrplot")
-corrplot(cor.mat, type="upper", order="hclust", 
-         tl.col="black", tl.srt=45)
-```
-
 &lt;img src="index_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
 
 
@@ -226,50 +277,20 @@ corrplot(cor.mat, type="upper", order="hclust",
 ---
 ## Principal Components: screeplot and scoreplot
 
-
-```r
-res.pca &lt;- PCA(decathlon2.active, graph = FALSE)
-eigenvalues &lt;- res.pca$eig
-barplot(eigenvalues[, 2], names.arg=1:nrow(eigenvalues), 
-       main = "Variances",
-       xlab = "Principal Components",
-       ylab = "Percentage of variances",
-       col ="steelblue")
-# Add connected line segments to the plot
-lines(x = 1:nrow(eigenvalues), eigenvalues[, 2], 
-      type="b", pch=19, col = "red")
-```
-
 &lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
 
 ---
 ## Loadings
-
-```r
-fviz_pca_var(res.pca, col.var="contrib")+
-scale_color_gradient2(low="blue", mid="white", high="red")+theme_bw()
-```
-
 &lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
 
 
 ---
 ## Principal Components: screeplot and scoreplot
-
-```r
-fviz_pca_ind(res.pca)
-```
-
 &lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" width="100%" /&gt;
 
 
 ---
 ## Biplot
-
-```r
-fviz_pca_biplot(res.pca,  geom = "text")
-```
-
 &lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" width="100%" /&gt;
 
 
@@ -488,12 +509,6 @@ layout: true
 #### R Code
 
 
-```r
-ggplot(gapminder) +
-  aes(x = gdpPercap, y = lifeExp, size = pop, color = country) +
-  geom_point() +
-  facet_wrap(~year)
-```
 
 #### JavaScript
 
@@ -509,16 +524,9 @@ var fun = function lang(l) {
 ### More R Code
 
 
-```r
-dplyr::starwars %&gt;% dplyr::slice_sample(n = 4)
-```
 
 ---
 
-
-```r
-cli::cli_alert_success("It worked!")
-```
 
 ```
 ## ✔ It worked!
@@ -527,10 +535,6 @@ cli::cli_alert_success("It worked!")
 --
 
 
-```r
-message("Just a friendly message")
-```
-
 ```
 ## Just a friendly message
 ```
@@ -538,20 +542,12 @@ message("Just a friendly message")
 --
 
 
-```r
-warning("This could be bad...")
-```
-
 ```
 ## Warning: This could be bad...
 ```
 
 --
 
-
-```r
-stop("I hope you're sitting down for this")
-```
 
 ```
 ## Error in eval(expr, envir, enclos): I hope you're sitting down for this
@@ -566,10 +562,6 @@ layout: true
 ---
 exclude: false
 
-
-```r
-tibble::as_tibble(mtcars)
-```
 
 ```
 ## # A tibble: 32 × 11
@@ -589,11 +581,6 @@ tibble::as_tibble(mtcars)
 ```
 
 ---
-
-
-```r
-knitr::kable(head(mtcars), format = 'html')
-```
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -703,13 +690,8 @@ knitr::kable(head(mtcars), format = 'html')
 ---
 exclude: false
 
-
-```r
-DT::datatable(head(mtcars), fillContainer = FALSE, options = list(pageLength = 4))
-```
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-370dbcad072e387ac0ff" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-370dbcad072e387ac0ff">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant"],[21,21,22.8,21.4,18.7,18.1],[6,6,4,6,8,6],[160,160,108,258,360,225],[110,110,93,110,175,105],[3.9,3.9,3.85,3.08,3.15,2.76],[2.62,2.875,2.32,3.215,3.44,3.46],[16.46,17.02,18.61,19.44,17.02,20.22],[0,0,1,1,0,1],[1,1,1,0,0,0],[4,4,4,3,3,3],[4,4,1,1,2,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>mpg<\/th>\n      <th>cyl<\/th>\n      <th>disp<\/th>\n      <th>hp<\/th>\n      <th>drat<\/th>\n      <th>wt<\/th>\n      <th>qsec<\/th>\n      <th>vs<\/th>\n      <th>am<\/th>\n      <th>gear<\/th>\n      <th>carb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-727776623a77c8b7257f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-727776623a77c8b7257f">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant"],[21,21,22.8,21.4,18.7,18.1],[6,6,4,6,8,6],[160,160,108,258,360,225],[110,110,93,110,175,105],[3.9,3.9,3.85,3.08,3.15,2.76],[2.62,2.875,2.32,3.215,3.44,3.46],[16.46,17.02,18.61,19.44,17.02,20.22],[0,0,1,1,0,1],[1,1,1,0,0,0],[4,4,4,3,3,3],[4,4,1,1,2,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>mpg<\/th>\n      <th>cyl<\/th>\n      <th>disp<\/th>\n      <th>hp<\/th>\n      <th>drat<\/th>\n      <th>wt<\/th>\n      <th>qsec<\/th>\n      <th>vs<\/th>\n      <th>am<\/th>\n      <th>gear<\/th>\n      <th>carb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 ---
 layout: true
@@ -782,21 +764,11 @@ layout: true
 
 ---
 
-
-```r
-library(ggplot2)
-(g &lt;- ggplot(mpg) + aes(hwy, cty, color = class) + geom_point())
-```
-
 &lt;img src="index_files/figure-html/plot-example-1.png" width="100%" /&gt;
 
 ---
 
 
-```r
-g + xaringanthemer::theme_xaringan(text_font_size = 16, title_font_size = 18) +
-  ggtitle("A Plot About Cars")
-```
 
 .footnote[Requires `{showtext}`]
 

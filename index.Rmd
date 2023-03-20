@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
   fig.width=9, fig.height=3.5, fig.retina=3,
   out.width = "100%",
   cache = FALSE,
-  echo = TRUE,
+  echo = FALSE,
   message = FALSE, 
   warning = FALSE,
   hiline = TRUE
@@ -47,11 +47,62 @@ class: inverse center middle
 
 ## SPF Project
 
+.pull-left[
+
+*   in collaboration with SPF
+*   high and low order explosions
+*   debris collected
+*   analysed with infrared spectroscopy
+]
+
+.pull-right[
+
+
+![Test](FIGURES/explosion.png)
+]
+
 ---
 ## Experiments
 
+.pull-left[
+
+*   KBr pellets
+*   mid-IR range
+*   multiple spectra measured
+*   spectral signatures from high energetic material
+*   ... but also from the surface material (paper, plastic, textile)
+]
+
+.pull-right[
+
+
+1.  Item one
+1.  Item two
+1.  Item three
+1.  Item four
+]
+
+
 ---
-## Motivation
+## Motivation for this sub-project
+
+.pull-left[
+
+*   check which materials are more suitable as sample collectors
+*   check what is the influence of the order of explosion 
+*   investigate dimension reduction method in combination with discrimination
+*   building classification model: PCA-LDA
+
+]
+
+.pull-right[
+
+
+1.  Item one
+1.  Item two
+1.  Item three
+1.  Item four
+]
 
 ---
 ## New Slide with list
@@ -68,6 +119,23 @@ class: inverse center middle
 ---
 
 ## Spectral Data
+.pull-left[
+
+*   typically more variables than observations
+*   variables are highly correlated and auto-correlated
+*   before modeling need for dimension reduction
+*   pre-processing
+]
+
+.pull-right[
+
+
+1.  Item one
+1.  Item two
+1.  Item three
+1.  Item four
+]
+
 
 ---
 ## Dimension Reduction
@@ -127,14 +195,14 @@ scale_color_gradient2(low="blue", mid="white", high="red")+theme_bw()
 
 ---
 ## Principal Components: screeplot and scoreplot
-```{r}
+```{r, fig.height=4}
 fviz_pca_ind(res.pca)
 ```
 
 
 ---
 ## Biplot
-```{r}
+```{r, fig.height=4}
 fviz_pca_biplot(res.pca,  geom = "text")
 ```
 
