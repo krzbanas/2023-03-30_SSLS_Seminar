@@ -283,7 +283,7 @@ class: inverse center middle
 
 ---
 ## 2D partitions
-<img src="FIGURES/Partition_plot.png"
+<img src="FIGURES/partition_plot.png"
      width="800px"
      style="position:absolute; left:10px; top:130px;">
 ---
