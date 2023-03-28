@@ -1,9 +1,8 @@
 ---
-title: "Classification of the Residues after High and Low Order Explosions New Name"
-subtitle: "using Machine Learning Techniques on Fourier Transform Infrared (FTIR) spectra"  
-author: 
-  - "Krzysztof Banas"
-date: '2023-03-30'
+title: "Classification of the Residues after High and Low Order Explosions"
+subtitle: "using Machine Learning Techniques on Fourier Transform Infrared (FTIR) spectra"
+author: "Krzysztof Banas<br><span style = 'font-size: 80%;'>SSLS<br></span>"
+date: 2023-03-30
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
@@ -14,6 +13,7 @@ output:
       ratio: 16:9
       countdown: 60000
       countIncrementalSlides: true
+      titleSlideClass: ["center", "middle", "inverse"]
 ---
 
 ```{r setup, include=FALSE}
@@ -388,7 +388,7 @@ class: inverse center middle
 ### Slides: 
 https://krzbanas.github.io/2023-03-30_SSLS_Seminar
 
-![Seminar](FIGURES/2023-03-30_Seminar.png)
+![Seminar](FIGURES/seminar_title.png)
 
 ]
 
