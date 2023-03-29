@@ -121,7 +121,7 @@ class: inverse center middle
 *   typically more variables than observations
 *   variables are highly correlated and auto-correlated
 *   before modeling need for dimension reduction
-*   pre-processing
+*   pre-processing is crucial
 ]
 
 .pull-right[
@@ -163,9 +163,10 @@ class: inverse center middle
 ```{r}
 library("FactoMineR")
 library("factoextra")
-data(decathlon2)
-knitr::kable(head(decathlon2[, 1:9], n=8), format = 'html')
-
+library("DT")
+data(decathlon)
+#knitr::kable(head(decathlon2[, 1:9], n=8), format = 'html')
+datatable(decathlon)
 ```
 
 
@@ -173,8 +174,8 @@ knitr::kable(head(decathlon2[, 1:9], n=8), format = 'html')
 ## Correlation between variables
 
 ```{r}
-decathlon2.active <- decathlon2[1:23, 1:10]
-cor.mat <- round(cor(decathlon2.active),2)
+decathlon.active <- decathlon[1:13, 1:10]
+cor.mat <- round(cor(decathlon.active),2)
 library("corrplot")
 corrplot(cor.mat, type="upper", order="hclust", 
          tl.col="black", tl.srt=45)
@@ -186,8 +187,15 @@ corrplot(cor.mat, type="upper", order="hclust",
 ## Principal Components: screeplot and scoreplot
 
 ```{r}
-res.pca <- PCA(decathlon2.active, graph = FALSE)
+res.pca <- PCA(decathlon.active, graph = FALSE)
 eigenvalues <- res.pca$eig
+
+datatable(format(eigenvalues, digits=2))
+```
+
+---
+
+```{r}
 barplot(eigenvalues[, 2], names.arg=1:nrow(eigenvalues), 
        main = "Variances",
        xlab = "Principal Components",
@@ -199,26 +207,73 @@ lines(x = 1:nrow(eigenvalues), eigenvalues[, 2],
 ```
 
 ---
-## Loadings
+## Correlation between a variable and a principal component 
+
 ```{r}
-fviz_pca_var(res.pca, col.var="contrib")+
-scale_color_gradient2(low="blue", mid="white", high="red")+theme_bw()
+var <- get_pca_var(res.pca)
+datatable(format(var$coord, digits=2))
 ```
 
 
 ---
-## Principal Components: screeplot and scoreplot
+## Variable Correlation Plot
+```{r, fig.retina=3, fig.height=4}
+fviz_pca_var(res.pca, col.var="black")+theme_bw()
+```
+
+---
+## Quality of Representation (cos<sup>2</sup>)
+```{r}
+datatable(format(var$cos2, digits=3, scientific=FALSE))
+```
+
+
+---
+## Correlation Plot
+.pull-left[
+```{r, fig.height=6, fig.retina=3}
+library(corrplot)
+corrplot(var$cos2,is.corr=FALSE, cl.pos="r")
+```
+]
+
+.pull-right[
+```{r, fig.height=6, fig.retina=3}
+
+fviz_pca_var(res.pca, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07")
+             )
+```
+
+]
+
+---
+## Contributions of variables to PC1
+```{r}
+fviz_contrib(res.pca, choice = "var", axes = 1, top = 10)
+```
+
+---
+## Contributions of variables to PC2
+```{r}
+fviz_contrib(res.pca, choice = "var", axes = 2, top = 10)
+```
+
+
+---
+## Contributions of variables to PC1 and PC2
+```{r}
+fviz_contrib(res.pca, choice = "var", axes = 1:2, top = 10)
+```
+
+
+
+
+---
+## Principal Components: scoreplot
 ```{r, fig.height=4}
 fviz_pca_ind(res.pca)
 ```
-
-
----
-## Biplot
-```{r, fig.height=4}
-fviz_pca_biplot(res.pca,  geom = "text")
-```
-
 
 
 ---
@@ -251,6 +306,14 @@ fviz_pca_biplot(res.pca,  geom = "text")
 .pull-right[
 
 ]
+
+---
+## Spectral dataset
+```{r}
+spectra01 <- read.csv("data01.csv")
+
+datatable(spectra01[,-c(1,4)])
+```
 
 ---
 ## Loadings and contribution plot
@@ -289,21 +352,22 @@ class: inverse center middle
 ---
 ## Building Classification Model
 
--  first use PCA on spectral data for dimension reduction
--  then use LDA to build the Classification Model using a first few PC's
--  test the Classification Model with new data
+-  first: use PCA on spectral data for Dimension Reduction
+-  then: use LDA to build the Classification Model using a first few PC's
+-  finally: test the Classification Model with new data
 ---
-## How LDA works
+background-image: url("FIGURES/LDA_00.png")
+background-position: 50% 50%
+background-size: 40% 60%
+## How LDA works<sup>1</sup>
 
-.pull-left[
-Source: Linear discriminant analysis : a detailed tutorial Gaber, T, Tharwat, A, Ibrahim, A and Hassanien, AE AI Communications (2017)
-]
 
-.pull-right[
-```{r,out.width = "500px"}
-knitr::include_graphics("FIGURES/LDA_00.png")
-```
-]
+
+
+
+.footnote[[1] Source: Linear discriminant analysis : a detailed tutorial Gaber, T, Tharwat, A, Ibrahim, A and Hassanien, AE AI Communications (2017)]
+
+
 
 
 ---
@@ -322,6 +386,19 @@ class: inverse center middle
 ## Discriminant functions plot
 .pull-left[
 ![Test](FIGURES/LDA_01.png)
+]
+.pull-right[
+- first two linear discriminant functions
+- all observations (originaly spectra) 
+- colour coded class membership (explosive and order)
+]
+
+
+
+---
+## Discriminant functions plot
+.pull-left[
+![Test](FIGURES/LDA_02.png)
 ]
 .pull-right[
 - first two linear discriminant functions
